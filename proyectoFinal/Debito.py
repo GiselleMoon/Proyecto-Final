@@ -30,7 +30,7 @@ class Debito(c.Cuenta):
         :return: Una cuenta de débito en formato cadena.
         :rtype: str
         """
-        return super().__str__().replace("producto", "cuenta").replace("Monto", "Saldo").replace("acción", "corte"),
+        return super().__str__().replace("CUENTA", "CUENTA DÉBITO").replace("producto", "cuenta").replace("Monto", "Saldo").replace("acción", "corte")
 
     def __iter__(self):
         """
@@ -45,7 +45,7 @@ class Debito(c.Cuenta):
 
 if __name__ == "__main__":
     debito = Debito("Louisa Martínez López", "000002", "1234",
-                    60000, "23-02-23", "27-03-23", 2, "Ciudad de México",
+                    60000, "23-02-2023", "27-03-2023", 2, "Ciudad de México",
                     "loumarp@gmail.com", "5587926947")
 
     print(debito)
