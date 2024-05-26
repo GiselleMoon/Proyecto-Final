@@ -5,7 +5,7 @@
 
 import Cuenta as c
 
-class Nómina(c.Cuenta):
+class Nomina(c.Cuenta):
     def __init__(self, nombre_cliente, numero_cliente, numero_cuenta, saldo, fecha_apertura,
                  fecha_deposito, sucursal, estado, correo, telefono, rfc_empresa, nombre_empresa):
         """
@@ -74,8 +74,8 @@ class Nómina(c.Cuenta):
         :return: Una cuenta de débito en formato cadena.
         :rtype: str
         """
-        return super().__str__().replace("producto", "cuenta").replace("Monto", "Saldo").replace("acción", "depósito") + \
-            "RFC de la empresa: {} \n Nombre de la empresa: {}\n".format(self.__rfc_empresa, self.__nombre_empresa)
+        return super().__str__().replace("CUENTA", "CUENTA NÓMINA").replace("producto", "cuenta").replace("Monto", "Saldo").replace("acción", "depósito") + \
+            "RFC de la empresa: {} \nNombre de la empresa: {}\n".format(self.__rfc_empresa, self.__nombre_empresa)
 
 
     def __iter__(self):
@@ -90,8 +90,8 @@ class Nómina(c.Cuenta):
 
 
 if __name__ == "__main__":
-    nomina = Nomina("Vittorino Bianco ", "000004", "12345694",
-                    250000, "07-03-23", "10-03-23", 2, "Ciudad de México",
-                    "vittorinocic@gmail.com", "5585471216")
+    nomina = Nomina("Vittorino Bianco", "000004", "12345694",
+                    250000, "07-03-2023", "10-03-2023", 2, "Ciudad de México",
+                    "vittorinocic@gmail.com", "5585471216", "DXIA050307ME1", "Desolé")
 
     print(nomina)
