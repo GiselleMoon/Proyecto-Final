@@ -1,10 +1,3 @@
-######Parte 1: 1,2, 3, 17######
-
-### 1: Cuentas débido ###
-### 2: Cuentas crédito ###
-### 3: Cuentas nómina ###
-### 17: Ejecutivos de cuenta ###
-
 #Programa: Cuenta.py
 #Objetivo: Programa que define una clase para manejar cuentas.
 #Autor: Binary Balance
@@ -40,20 +33,20 @@ class Cuenta:
         try:
             self.__fecha_apertura = datetime.strptime(fecha_apertura, "%d-%m-%Y").date()
         except ValueError:
-            print("La fecha de apertura ingresada: '{}' no está en el formato dd-mm-yyyy\n").format(fecha_apertura)
+            print("La fecha de apertura ingresada: {} no está en el formato dd-mm-yyyy\n".format(fecha_apertura))
             
         try:
             self.__fecha_accion = datetime.strptime(fecha_accion, "%d-%m-%Y").date()
         except ValueError:
-            print(("La fecha ingresada: '{}' no está en el formato dd-mm-yyyy\n").format(fecha_accion)
+            print("La fecha ingresada: {} no está en el formato dd-mm-yyyy\n".format(fecha_accion))
 
         self.__sucursal = sucursal
         self.__estado = estado
 
         try:
-            self.__correo = validate_email(correo)
+            self.__correo = validate_email(correo).email
         except EmailNotValidError:
-            print("El correo ingresado: {} no tiene un formato válido\n").format(correo)
+            print("El correo ingresado: {} no tiene un formato válido\n".format(correo))
 
         self.__telefono = telefono
 
@@ -191,7 +184,8 @@ class Cuenta:
         try:
             self.__fecha_apertura = datetime.strptime(fecha_apertura, "%d-%m-%Y").date()
         except ValueError:
-            print("La fecha de apertura ingresada: '{}' no está en el formato dd-mm-yyyy\n").format(fecha_apertura)
+            print("La fecha de apertura ingresada: '{}' no está en el formato dd-mm-yyyy\n".format(fecha_apertura))
+####################
 
     @fecha_accion.setter
     def fecha_accion(self, fecha_accion:str):
@@ -202,7 +196,7 @@ class Cuenta:
         try:
             self.__fecha_accion = datetime.strptime(fecha_accion, "%d-%m-%Y").date()
         except ValueError:
-            print("La fecha ingresada: '{}' no está en el formato dd-mm-yyyy\n").format(fecha_accion)
+            print("La fecha ingresada: '{}' no está en el formato dd-mm-yyyy\n".format(self.__fecha_accion))
 
     @sucursal.setter
     def sucursal(self, sucursal:int):
@@ -229,7 +223,7 @@ class Cuenta:
         try:
             self.__correo = validate_email(correo)
         except EmailNotValidError:
-            print("El correo ingresado: {} no tiene un formato válido\n").format(correo)
+            print("El correo ingresado: {} no tiene un formato válido\n".format(self.__correo))
 
     @telefono.setter
     def telefono(self, telefono:str):
@@ -246,9 +240,9 @@ class Cuenta:
         :return: La cuenta en formato cadena
         :rtype: str
         """
-        return "Cuenta:\n Nombre del cliente: {}\n Número de cliente: {}\n Número de producto: {}\n" + \
-            "Monto: {}\n Fecha de apertura: {}\n, Fecha de acción: {}\ Sucursal: {}\n" + \
-            "Estado: {}\n Correo: {}\n Teléfono: {}".format(self.__nombre_cliente,
+        return "|CUENTA|\nNombre del cliente: {}\nNúmero de cliente: {}\nNúmero de producto: {}\n"\
+            "Monto: {}\nFecha de apertura: {}\nFecha de acción: {}\nSucursal: {}\n"\
+            "Estado: {}\nCorreo: {}\nTeléfono: {}".format(self.__nombre_cliente,
                                                             self.__numero_cliente,
                                                             self.__numero_producto,
                                                             self.__monto,
@@ -257,7 +251,7 @@ class Cuenta:
                                                             self.__sucursal,
                                                             self.__estado,
                                                             self.__correo,
-                                                            self.__teléfono)
+                                                            self.__telefono)
 
     def __iter__(self):
         """
@@ -271,7 +265,7 @@ class Cuenta:
 
 if __name__ == "__main__":
     cuenta = Cuenta("Luis Francisco Revuelta", "000001", "12345678",
-                    100000, "15-04-23", "25-05-23", 4, "Ciudad de México",
+                    100000, "15-04-2023", "25-05-2023", 4, "Ciudad de México",
                     "luisfrancis@gmail.com", "5534689876")
     print(cuenta)
 
